@@ -20,7 +20,7 @@ const handleNavActive = e => {
 const handlePanels = e => {
 	const $panels = document.querySelectorAll('.panel');
 	[...$panels].forEach($panel => {
-		if ($panel.id.includes(e.target.id)) {
+		if (e.target.id.includes($panel.id)) {
 			$panel.classList.remove('visually-hidden');
 		} else {
 			$panel.classList.add('visually-hidden');
@@ -39,7 +39,7 @@ const renderClubItem = club => {
 		'img'
 	).src = `http://localhost:8080/uploads/img/${club.crest}`;
 	$clubItem.querySelector('#delete-club').onclick = () => handleDelete(club.id);
-	document.querySelector('#club-list-panel').appendChild($clubItem);
+	document.querySelector('#all-clubs').appendChild($clubItem);
 };
 
 const handleDelete = async id => {
@@ -68,12 +68,10 @@ document.querySelector('nav').onclick = e => {
 			getClubs().then(clubs => {
 				if (!clubs.length) {
 					document
-						.querySelector('#no-clubs-panel')
+						.querySelector('#no-clubs')
 						.classList.remove('visually-hidden');
 				} else {
-					document
-						.querySelector('#no-clubs-panel')
-						.classList.add('visually-hidden');
+					document.querySelector('#no-clubs').classList.add('visually-hidden');
 					clubs.forEach(club => renderClubItem(club));
 				}
 			});

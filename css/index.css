@@ -1,5 +1,11 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap');
+
 body {
 	background-color: rgb(132, 148, 132);
+	/* font-family: Oswald, sans-serif; */
+	font-family: 'titillium web', sans-serif;
 }
 
 #app {
@@ -9,9 +15,15 @@ body {
 	background-color: rgb(215, 241, 215);
 }
 
+#panel-header {
+	background-color: rgba(99, 99, 99, 0.11);
+}
+
+/* CREATE CLUB */
+
 /* CLUB LIST */
 
-#club-list-panel > li {
+#club-list > li {
 	border-bottom: 1px solid white;
 }
 
@@ -23,6 +35,7 @@ body {
 #crest-mini {
 	height: 20px;
 	width: 20px;
+	overflow: hidden;
 }
 #crest-mini img {
 	height: 100%;
