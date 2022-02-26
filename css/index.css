@@ -27,21 +27,21 @@ body {
 	border-bottom: 1px solid white;
 }
 
-#club-detail-link:hover {
+.club-detail-link:hover {
 	color: rgb(1, 1, 129) !important;
 	cursor: pointer;
 }
 
-#crest-mini {
+.crest-mini {
 	height: 20px;
 	width: 20px;
 	overflow: hidden;
 }
-#crest-mini img {
+.crest-mini img {
 	height: 100%;
 }
 
-#delete-club i:hover {
+.delete-club i:hover {
 	color: rgb(224, 69, 69);
 }
 

@@ -17,29 +17,15 @@ const handleNavActive = e => {
 	});
 };
 
-const handlePanels = e => {
+const handlePanelsVisibility = id => {
 	const $panels = document.querySelectorAll('.panel');
 	[...$panels].forEach($panel => {
-		if (e.target.id.includes($panel.id)) {
+		if (id.includes($panel.id)) {
 			$panel.classList.remove('visually-hidden');
 		} else {
 			$panel.classList.add('visually-hidden');
 		}
 	});
-};
-
-const renderClubItem = club => {
-	const $clubItem = document
-		.querySelector('#club-item-template')
-		.cloneNode(true);
-	$clubItem.classList.remove('visually-hidden');
-	$clubItem.id = club.id;
-	$clubItem.querySelector('#club-detail-link').innerText = club.name;
-	$clubItem.querySelector(
-		'img'
-	).src = `http://localhost:8080/uploads/img/${club.crest}`;
-	$clubItem.querySelector('#delete-club').onclick = () => handleDelete(club.id);
-	document.querySelector('#all-clubs').appendChild($clubItem);
 };
 
 const handleDelete = async id => {
@@ -52,29 +38,55 @@ const handleDelete = async id => {
 	return data;
 };
 
-// const handlePost = async () => {
-//   const options = {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'multipart/form-data' },
-//   };
-//   const response = fetch('')
-// }
+const fillDetails = club => {
+	document.querySelector(
+		'#crest-main img'
+	).src = `http://localhost:8080/uploads/img/${club.crest}`;
+
+	document.querySelectorAll('.field').forEach(field => {
+		field.innerText = club[`${field.id}`];
+	});
+};
+
+const fillEditForm = club => {};
+
+const renderClubItem = club => {
+	const $clubItem = document
+		.querySelector('#club-item-template')
+		.cloneNode(true);
+	$clubItem.classList.remove('visually-hidden');
+	$clubItem.id = club.id;
+	$clubItem.querySelector('.club-detail-link').innerText = club.name;
+	$clubItem.querySelector(
+		'img'
+	).src = `http://localhost:8080/uploads/img/${club.crest}`;
+	$clubItem.querySelector('.delete-club').onclick = () => handleDelete(club.id);
+	$clubItem.querySelector('.club-detail-link').onclick = () => {
+		document.querySelectorAll('nav a').forEach(tab => {
+			tab.classList.remove('text-decoration-none', 'fw-bold', 'text-black');
+			tab.classList.add('text-black-50');
+		});
+		// handlePanelsVisibility('club-details');
+		fillDetails(club);
+	};
+	$clubItem.querySelector('#club-edit-link').onclick = e => {
+		fillEditForm(club);
+	};
+	document.querySelector('#all-clubs').appendChild($clubItem);
+};
 
 document.querySelector('nav').onclick = e => {
 	if (e.target.tagName == 'A') {
 		handleNavActive(e);
-		handlePanels(e);
-		if (e.target.id.includes('club-list')) {
-			getClubs().then(clubs => {
-				if (!clubs.length) {
-					document
-						.querySelector('#no-clubs')
-						.classList.remove('visually-hidden');
-				} else {
-					document.querySelector('#no-clubs').classList.add('visually-hidden');
-					clubs.forEach(club => renderClubItem(club));
-				}
-			});
-		}
+		handlePanelsVisibility(e.target.id);
 	}
 };
+
+getClubs().then(clubs => {
+	if (!clubs.length) {
+		document.querySelector('#no-clubs').classList.remove('visually-hidden');
+	} else {
+		document.querySelector('#no-clubs').classList.add('visually-hidden');
+		clubs.forEach(club => renderClubItem(club));
+	}
+});
