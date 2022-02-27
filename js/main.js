@@ -43,12 +43,29 @@ const fillDetails = club => {
 		'#crest-main img'
 	).src = `http://localhost:8080/uploads/img/${club.crest}`;
 
-	document.querySelectorAll('.field').forEach(field => {
-		field.innerText = club[`${field.id}`];
+	document.querySelectorAll('.field').forEach($field => {
+		$field.innerText = club[`${$field.id}`];
 	});
+	document.querySelector(
+		'#colors-banner'
+	).style.backgroundImage = `linear-gradient(to right, transparent, ${club.colors[0]} 20%, ${club.colors[0]} 50%, ${club.colors[1]} 50%, ${club.colors[1]} 80%, transparent)`;
 };
 
-const fillEditForm = club => {};
+const fillEditForm = club => {
+	console.log(club.colors[0]);
+	console.log(club.colors[1]);
+	document.querySelectorAll('.edit-input').forEach($input => {
+		$input.value = club[`${$input.name}`];
+	});
+	console.log(document.querySelector('#color-1'));
+	console.log(document.querySelector('#color-2'));
+	document.querySelector('#color-1').value = club.colors[0];
+	document.querySelector('#color-2').value = club.colors[1];
+	document.querySelector('#color-1').style.backgroundColor = club.colors[0];
+	document.querySelector('#color-2').style.backgroundColor = club.colors[1];
+	console.log(document.querySelector('#color-1'));
+	console.log(document.querySelector('#color-2'));
+};
 
 const renderClubItem = club => {
 	const $clubItem = document
@@ -62,16 +79,17 @@ const renderClubItem = club => {
 	).src = `http://localhost:8080/uploads/img/${club.crest}`;
 	$clubItem.querySelector('.delete-club').onclick = () => handleDelete(club.id);
 	$clubItem.querySelector('.club-detail-link').onclick = () => {
-		document.querySelectorAll('nav a').forEach(tab => {
-			tab.classList.remove('text-decoration-none', 'fw-bold', 'text-black');
-			tab.classList.add('text-black-50');
+		document.querySelectorAll('nav a').forEach($tab => {
+			$tab.classList.remove('text-decoration-none', 'fw-bold', 'text-black');
+			$tab.classList.add('text-black-50');
 		});
 		// handlePanelsVisibility('club-details');
 		fillDetails(club);
-	};
-	$clubItem.querySelector('#club-edit-link').onclick = e => {
 		fillEditForm(club);
 	};
+	// $clubItem.querySelector('#club-edit-link').onclick = e => {
+	// 	fillEditForm(club);
+	// };
 	document.querySelector('#all-clubs').appendChild($clubItem);
 };
 
