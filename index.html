@@ -26,7 +26,7 @@
 			</nav>
 			<!-- ______________________________________________________________________________ -->
 			<!-- NEW CLUB -->
-			<div id="club-create" class="panel visually-hidden">
+			<div id="club-create" class="panel">
 				<h5 id="panel-header" class="text-center m-0">Create New Club</h5>
 				<form
 					method="POST"
@@ -234,12 +234,9 @@
 			</div>
 			<!-- _____________________________________________________________________________________________________________________________ -->
 			<!-- ALL CLUBS -->
-			<div id="club-list" class="panel">
+			<div id="club-list" class="panel visually-hidden">
 				<h5 id="panel-header" class="text-center m-0 mb-4">All Clubs</h5>
-				<ul
-					id="all-clubs"
-					class="list-unstyled m-0 d-flex flex-column align-items-stretch"
-				>
+				<ul class="list-unstyled m-0 d-flex flex-column align-items-stretch">
 					<!-- CLUB-ITEM-TEMPLATE -->
 					<li id="club-item-template" class="mb-2 text-center visually-hidden">
 						<ul class="list-unstyled d-flex align-items-center">
@@ -256,12 +253,13 @@
 								></h6>
 							</li>
 							<li>
-								<a class="delete-club text-black" href="">
-									<i class="bi bi-trash3 px-2"></i>
+								<a class="delete-club text-black" href="#">
+									<i class="club-delete-link bi bi-trash3 px-2"></i>
 								</a>
 							</li>
 						</ul>
 					</li>
+					<div id="all-clubs"></div>
 				</ul>
 			</div>
 			<!-- ____________________________________________________________________ -->
@@ -274,7 +272,7 @@
 			</h6>
 			<!-- ______________________________________________________________________________________________________ -->
 			<!-- CLUB DETAIL -->
-			<div id="club-detail" class="panel">
+			<div id="club-detail" class="panel visually-hidden">
 				<h5 id="panel-header" class="text-center m-0 mb-4">Club Details</h5>
 				<ul class="list-unstyled my-2">
 					<li class="d-flex justify-content-center align-items-center">
@@ -291,9 +289,9 @@
 						<h3 id="name" class="field text-center p-0 m-0 me-3">
 							{{club.name}}
 						</h3>
-						<a id="club-edit-link" href="" class="text-black-50 pt-1"
-							><i class="bi bi-pencil-square fs-5"></i
-						></a>
+						<span href="#" class="text-black-50 pt-1"
+							><i id="club-edit-link" class="bi bi-pencil-square fs-5"></i
+						></span>
 					</li>
 					<li id="colors-banner" style="height: 5px"></li>
 					<div class="container">
@@ -348,13 +346,8 @@
 			</div>
 			<!-- _____________________________________________________________________________________________ -->
 			<!-- EDIT CLUB -->
-			<div id="club-edit" class="panel">
-				<form
-					action="/clubs/edit/{{club.id}}"
-					method="POST"
-					class="mb-0"
-					enctype="multipart/form-data"
-				>
+			<div id="club-edit" class="panel visually-hidden">
+				<form id="edit-form" class="mb-0" enctype="multipart/form-data">
 					<h6 class="text-center mb-3">Edit Club</h6>
 					<div class="row d-flex align-items-center">
 						<label for="crest" class="col-4 form-label my-0 text-black-50"
@@ -371,13 +364,16 @@
 						<label for="color-1" class="col-4 form-label my-0 text-black-50"
 							>Color 1</label
 						>
-						<div class="col p-0 d-flex align-items-center" style="height: 39px">
+						<div
+							id="color1-field-container"
+							class="col p-0 d-flex align-items-center"
+							style="height: 39px"
+						>
 							<input
 								style="height: 30px"
 								type="color"
 								name="color1"
 								id="color-1"
-								class="form-control form-control-color edit-color"
 								required
 							/>
 						</div>
@@ -386,13 +382,16 @@
 						<label for="color-2" class="col-4 form-label my-0 text-black-50"
 							>Color 2</label
 						>
-						<div class="col p-0 d-flex align-items-center" style="height: 39px">
+						<div
+							id="color2-field-container"
+							class="col p-0 d-flex align-items-center"
+							style="height: 39px"
+						>
 							<input
 								style="height: 30px"
 								type="color"
 								name="color2"
 								id="color-2"
-								class="form-control form-control-color edit-color"
 								required
 							/>
 						</div>

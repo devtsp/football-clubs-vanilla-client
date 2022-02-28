@@ -69,12 +69,14 @@ body {
 	background-color: rgba(255, 255, 255, 0.226);
 }
 
-#club-edit-link i:hover {
+#club-edit-link:hover {
 	color: rgb(1, 1, 129) !important;
+	cursor: pointer;
 }
 
 /* CLUB EDIT */
 
 .edit-color {
-	padding: 1px;
+	padding: 1px !important;
+	height: 30px !important;
 }
