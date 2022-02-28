@@ -30,7 +30,7 @@
 				<h5 id="panel-header" class="text-center m-0">Create New Club</h5>
 				<form id="new-club-form" enctype="multipart/form-data" class="mb-0">
 					<div class="my-3">
-						<h6 for="crest" class="mb-2 text-black-50 text-center">
+						<h6 class="mb-2 text-black-50 text-center">
 							1: Upload a personal crest
 						</h6>
 						<label
@@ -47,15 +47,15 @@
 						/>
 						<div
 							class="crest-main-preview d-flex justify-content-center align-items-center my-3 mx-auto"
-						>
-							<img src="" alt="crest-preview" class="visually-hidden" />
-						</div>
+						></div>
 					</div>
 					<h6 for="crest" class="mb-2 text-black-50 text-center">
 						2: Select main colors for the club
 					</h6>
-					<div class="mb-3 d-flex justify-content-center align-items-center">
-						<div class="me-3">
+					<div
+						class="mb-3 d-flex justify-content-center align-items-center mb-3"
+					>
+						<div class="me-5">
 							<label
 								for="color-1"
 								class="form-label my-0 text-black-50 visually-hidden"
@@ -65,7 +65,7 @@
 								type="color"
 								name="color1"
 								id="color-1"
-								class="form-control form-control-color p-1"
+								class="form-control form-control-color"
 								value="#fafafa"
 								required
 							/>
@@ -80,7 +80,7 @@
 								type="color"
 								name="color2"
 								id="color-2"
-								class="form-control form-control-color p-1"
+								class="form-control form-control-color"
 								value="#000000"
 								required
 							/>
@@ -109,7 +109,7 @@
 					</div>
 					<div>
 						<label
-							for="name"
+							for="tla"
 							class="form-label my-0 text-black-50 ps-1 visually-hidden"
 							>tla</label
 						>
@@ -143,7 +143,7 @@
 					</div>
 					<div>
 						<label
-							for="owner"
+							for="adress"
 							class="form-label my-0 text-black-50 ps-1 visually-hidden"
 							>Adress</label
 						>
@@ -288,7 +288,7 @@
 					<li
 						class="d-flex align-items-center justify-content-center mt-4 mb-2"
 					>
-						<h3 id="name" class="field text-center p-0 m-0 me-3">
+						<h3 data-property="name" class="field text-center p-0 m-0 me-3">
 							{{club.name}}
 						</h3>
 						<span href="#" class="text-black-50 pt-1"
@@ -299,47 +299,49 @@
 					<div class="container">
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">TLA </span>
-							<span id="tla" class="field col-8 text-start">{{club.tla}}</span>
+							<span data-property="tla" class="field col-8 text-start"
+								>{{club.tla}}</span
+							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Area </span>
-							<span id="area" class="field col-8 text-start"
+							<span data-property="area" class="field col-8 text-start"
 								>{{club.area}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Adress </span>
-							<span id="adress" class="field col-8 text-start"
+							<span data-property="adress" class="field col-8 text-start"
 								>{{club.adress}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Phone </span>
-							<span id="phone" class="field col-8 text-start"
+							<span data-property="phone" class="field col-8 text-start"
 								>{{club.phone}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Email </span>
-							<span id="email" class="field col-8 text-start"
+							<span data-property="email" class="field col-8 text-start"
 								>{{club.email}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Founded </span>
-							<span id="founded" class="field col-8 text-start"
+							<span data-property="founded" class="field col-8 text-start"
 								>{{club.founded}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Venue </span>
-							<span id="venue" class="field col-8 text-start"
+							<span data-property="venue" class="field col-8 text-start"
 								>{{club.venue}}</span
 							>
 						</li>
 						<li class="row d-flex justify-content-between py-2">
 							<span class="text-black-50 col-4 text-start">Last Updated </span>
-							<span id="last-updated" class="field col-8 text-start"
+							<span data-property="last-updated" class="field col-8 text-start"
 								>{{club.last-updated}}</span
 							>
 						</li>
@@ -358,55 +360,66 @@
 						<input
 							type="file"
 							name="crest"
-							id="crest"
+							id="crest-edit"
 							class="col form-control form-control-sm my-1"
 						/>
 					</div>
-					<div class="row d-flex align-items-center">
-						<label for="color-1" class="col-4 form-label my-0 text-black-50"
-							>Color 1</label
-						>
+					<div class="row">
+						<div class="col-4"></div>
 						<div
-							id="color1-field-container"
-							class="col p-0 d-flex align-items-center"
-							style="height: 39px"
-						>
-							<input
-								style="height: 30px"
-								type="color"
-								name="color1"
-								id="color-1"
-								required
-							/>
-						</div>
+							class="crest-main-preview d-flex justify-content-center align-items-center my-2"
+						></div>
 					</div>
-					<div class="row d-flex align-items-center">
-						<label for="color-2" class="col-4 form-label my-0 text-black-50"
-							>Color 2</label
-						>
-						<div
-							id="color2-field-container"
-							class="col p-0 d-flex align-items-center"
-							style="height: 39px"
-						>
-							<input
-								style="height: 30px"
-								type="color"
-								name="color2"
-								id="color-2"
-								required
-							/>
+					<div class="row d-flex align-items-center my-2">
+						<span class="col-4 text-black-50">Colors</span>
+						<div class="col-4 p-0 d-flex align-items-centerflex-fill">
+							<label
+								for="color-1"
+								class="col-4 form-label my-0 text-black-50 visually-hidden"
+								>Color 1</label
+							>
+							<div
+								id="color1-field-container"
+								class="col p-0 d-flex align-items-center"
+							>
+								<input
+									type="color"
+									name="color1"
+									class="form-control form-control-color"
+									id="color-1-edit"
+									required
+								/>
+							</div>
+						</div>
+						<div class="col-4 p-0 d-flex align-items-center flex-fill">
+							<label
+								for="color-2"
+								class="col-4 form-label my-0 text-black-50 visually-hidden"
+								>Color 2</label
+							>
+							<div
+								id="color2-field-container"
+								class="col p-0 d-flex align-items-center"
+							>
+								<input
+									type="color"
+									name="color2"
+									id="color-2-edit"
+									class="form-control form-control-color"
+									required
+								/>
+							</div>
 						</div>
 					</div>
 					<div class="container p-0">
 						<div class="row d-flex align-items-center">
-							<label for="name" class="form-label my-0 text-black-50 col-4"
+							<label for="name-edit" class="form-label my-0 text-black-50 col-4"
 								>Name</label
 							>
 							<input
 								type="text"
 								name="name"
-								id="name"
+								id="name-edit"
 								class="edit-input form-control form-control-sm my-1 col"
 								minlength="6"
 								maxlength="20"
@@ -414,13 +427,13 @@
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="name" class="col-4 form-label my-0 text-black-50"
+							<label for="tla-edit" class="col-4 form-label my-0 text-black-50"
 								>TLA</label
 							>
 							<input
 								type="text"
 								name="tla"
-								id="tla"
+								id="tla-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								minlength="3"
 								maxlength="3"
@@ -428,62 +441,70 @@
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="area" class="col-4 form-label my-0 text-black-50"
+							<label for="area-edit" class="col-4 form-label my-0 text-black-50"
 								>Area</label
 							>
 							<input
 								type="text"
 								name="area"
-								id="area"
+								id="area-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								required
 							/>
 						</div>
 						<div class="row d-flex align-items-center d-flex">
-							<label for="owner" class="col-4 form-label my-0 text-black-50"
+							<label
+								for="adress-edit"
+								class="col-4 form-label my-0 text-black-50"
 								>Adress</label
 							>
 							<input
 								type="text"
 								name="adress"
-								id="adress"
+								id="adress-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								required
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="phone" class="col-4 form-label my-0 text-black-50"
+							<label
+								for="phone-edit"
+								class="col-4 form-label my-0 text-black-50"
 								>Phone</label
 							>
 							<input
 								type="text"
 								name="phone"
-								id="phone"
+								id="phone-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								minlength="8"
 								required
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="email" class="col-4 form-label my-0 text-black-50"
+							<label
+								for="email-edit"
+								class="col-4 form-label my-0 text-black-50"
 								>Email</label
 							>
 							<input
 								type="email"
 								name="email"
-								id="email"
+								id="email-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								required
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="founded" class="col-4 form-label my-0 text-black-50"
+							<label
+								for="founded-edit"
+								class="col-4 form-label my-0 text-black-50"
 								>Founded</label
 							>
 							<input
 								type="text"
 								name="founded"
-								id="founded"
+								id="founded-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								minlength="4"
 								maxlength="4"
@@ -491,13 +512,15 @@
 							/>
 						</div>
 						<div class="row d-flex align-items-center">
-							<label for="venue" class="col-4 form-label my-0 text-black-50"
+							<label
+								for="venue-edit"
+								class="col-4 form-label my-0 text-black-50"
 								>Venue</label
 							>
 							<input
 								type="text"
 								name="venue"
-								id="venue"
+								id="venue-edit"
 								class="edit-input col form-control form-control-sm my-1"
 								minlength="3"
 								required

@@ -56,23 +56,45 @@ const fillEditForm = club => {
 	$inputs.forEach($input => {
 		$input.value = club[`${$input.name}`];
 	});
-	document.querySelector('#edit-form').onsubmit = async e => {
-		e.preventDefault();
-		const formData = new FormData(e.target);
-		const options = {
-			method: 'POST',
-			body: formData,
-		};
-		const response = await fetch(
-			`http://localhost:8080/edit/${e.target.dataset.clubId}`,
-			options
-		);
-		const data = await response.json();
-		document.querySelector('#club-list-tab').click();
-		document
-			.querySelector(`#all-clubs .club-detail-link[data-club-id=${club.id}]`)
-			.click();
+	document.querySelector(
+		'#edit-form .crest-main-preview'
+	).style.backgroundImage = `url('http://localhost:8080/uploads/img/${club.crest}')`;
+	document.querySelector('#crest-edit').onchange = e => {
+		const [image] = e.target.files;
+		if (image) {
+			const reader = new FileReader();
+			reader.onload = () => {
+				document.querySelector(
+					'#edit-form .crest-main-preview'
+				).style.backgroundImage = `url('${reader.result}')`;
+			};
+			reader.readAsDataURL(image);
+		} else {
+			document.querySelector(
+				'#edit-form .crest-main-preview'
+			).style.backgroundImage = 'url("../images/crest-empty.png")';
+		}
 	};
+	document.querySelector(
+		'#edit-form .crest-main-preview'
+	).style.backgroundImage = document.querySelector('#edit-form').onsubmit =
+		async e => {
+			e.preventDefault();
+			const formData = new FormData(e.target);
+			const options = {
+				method: 'POST',
+				body: formData,
+			};
+			const response = await fetch(
+				`http://localhost:8080/edit/${e.target.dataset.clubId}`,
+				options
+			);
+			const data = await response.json();
+			document.querySelector('#club-list-tab').click();
+			// document
+			// 	.querySelector(`#all-clubs .club-detail-link[data-club-id=${club.id}]`)
+			// 	.click();
+		};
 	return [...$inputs];
 };
 
@@ -89,7 +111,7 @@ const fillDetails = async id => {
 	).style.backgroundImage = `url('http://localhost:8080/uploads/img/${club.crest}`;
 
 	document.querySelectorAll('.field').forEach($field => {
-		$field.innerText = club[`${$field.id}`];
+		$field.innerText = club[`${$field.dataset.property}`];
 	});
 	document.querySelector(
 		'#colors-banner'
@@ -193,13 +215,14 @@ document.querySelector('#crest').onchange = e => {
 		const reader = new FileReader();
 		reader.onload = () => {
 			document.querySelector(
-				'.crest-main-preview'
+				'#new-club-form .crest-main-preview'
 			).style.backgroundImage = `url('${reader.result}')`;
 		};
 		reader.readAsDataURL(image);
 	} else {
-		document.querySelector('#crest-main-preview').style.backgroundImage =
-			'url("../images/crest-empty.png")';
+		document.querySelector(
+			'#new-club-form .crest-main-preview'
+		).style.backgroundImage = 'url("../images/crest-empty.png")';
 	}
 };
 
