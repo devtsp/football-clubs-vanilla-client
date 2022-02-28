@@ -100,3 +100,9 @@ body {
 .edit-color {
 	height: 40px !important;
 }
+
+/* DELETE MODAL */
+
+#delete-modal {
+	background-color: rgba(49, 49, 49, 0.295);
+}

@@ -18,12 +18,14 @@
 		<title>Football-Clubs CRUD Simulator</title>
 	</head>
 	<body>
-		<div id="app" class="p-4">
+		<div id="app" class="p-4 position-relative">
 			<!-- NAV BAR -->
 			<nav class="mb-4 d-flex justify-content-evenly">
 				<a id="club-create-tab" href="#" class="tab text-black-50">New Club</a>
 				<a id="club-list-tab" href="#" class="tab text-black-50">All Clubs</a>
 			</nav>
+      
+
 			<!-- ______________________________________________________________________________ -->
 			<!-- NEW CLUB -->
 			<div id="club-create" class="panel">
@@ -266,10 +268,17 @@
 				</ul>
 				<!-- ____________________________________________________________________ -->
 				<!-- NO CLUBS MESSAGE -->
-				<div id="no-clubs" class="text-center my-4 fw-normal visually-hidden">
+				<div id="no-clubs" class="text-center my-4 visually-hidden">
 					No clubs to display yet.
 					<strong ><u id="create-one" class="text-primary">Create One!</u></a></strong>
 				</div>
+        <!-- ____________________________________________________________________ -->
+        <!-- DELETE CONFIRMATION -->
+        <div id="delete-confirmation" class="text-center my-4 px-4 visually-hidden">
+          <p>Do you really want to delete this item? The info will be lost forever!</p>
+          <button id="delete-yes" class="btn btn-success btn-sm ">Yes, delete club</button>
+          <button id="delete-no" class="btn btn-danger btn-sm" >No, cancel action</button>
+        </div>
 			</div>
 			<!-- ______________________________________________________________________________________________________ -->
 			<!-- CLUB DETAIL -->

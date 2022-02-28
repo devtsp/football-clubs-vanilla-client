@@ -45,8 +45,24 @@ const fetchDelete = async id => {
 };
 
 const handleDelete = async id => {
-	fetchDelete(id);
-	document.querySelector(`#${id}`).remove();
+	document.querySelector('#all-clubs').classList.add('visually-hidden');
+	document
+		.querySelector('#delete-confirmation')
+		.classList.remove('visually-hidden');
+	document.querySelector('#delete-yes').onclick = e => {
+		fetchDelete(id);
+		document.querySelector(`#${id}`).remove();
+		document.querySelector('#all-clubs').classList.remove('visually-hidden');
+		document
+			.querySelector('#delete-confirmation')
+			.classList.add('visually-hidden');
+	};
+	document.querySelector('#delete-no').onclick = e => {
+		document.querySelector('#all-clubs').classList.remove('visually-hidden');
+		document
+			.querySelector('#delete-confirmation')
+			.classList.add('visually-hidden');
+	};
 };
 
 const fillEditForm = club => {
@@ -195,8 +211,11 @@ document.querySelector('nav').onclick = e => {
 };
 
 document.onclick = e => {
-	const clubs = document.querySelector('#all-clubs');
-	if (!clubs.length) {
+	const storedClubs = document.querySelector('#all-clubs').children.length;
+	const handlingDelete = !document
+		.querySelector('#delete-confirmation')
+		.classList.contains('visually-hidden');
+	if (!storedClubs && !handlingDelete) {
 		document.querySelector('#no-clubs').classList.remove('visually-hidden');
 	} else {
 		document.querySelector('#no-clubs').classList.add('visually-hidden');
