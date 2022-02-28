@@ -28,12 +28,7 @@
 			<!-- NEW CLUB -->
 			<div id="club-create" class="panel">
 				<h5 id="panel-header" class="text-center m-0">Create New Club</h5>
-				<form
-					method="POST"
-					action="http://localhost:8080/"
-					enctype="multipart/form-data"
-					class="mb-0"
-				>
+				<form id="new-club-form" enctype="multipart/form-data" class="mb-0">
 					<div class="my-3">
 						<h6 for="crest" class="mb-2 text-black-50 text-center">
 							1: Upload a personal crest
@@ -238,12 +233,15 @@
 				<h5 id="panel-header" class="text-center m-0 mb-4">All Clubs</h5>
 				<ul class="list-unstyled m-0 d-flex flex-column align-items-stretch">
 					<!-- CLUB-ITEM-TEMPLATE -->
-					<li id="club-item-template" class="mb-2 text-center visually-hidden">
+					<li
+						id="club-item-template"
+						class="mb-2 text-center visually-hidden mx-3"
+					>
 						<ul class="list-unstyled d-flex align-items-center">
 							<li
-								class="crest-mini mx-2 d-flex align-items-center justify-content-center"
+								class="flag-mini mx-2 d-flex align-items-center justify-content-center"
 							>
-								<img class="club-crest" src="/" />
+								<!-- <img class="club-crest" src="/" /> -->
 							</li>
 							<li
 								class="d-flex align-items-center justify-content-start flex-fill"
@@ -261,15 +259,16 @@
 					</li>
 					<div id="all-clubs"></div>
 				</ul>
+				<!-- ____________________________________________________________________ -->
+				<!-- NO CLUBS MESSAGE -->
+				<h6 id="no-clubs" class="text-center my-4 fw-normal visually-hidden">
+					No clubs to display yet.
+					<strong>
+						<a href="/index.html" class="text-primary">Create One!</a>
+					</strong>
+				</h6>
 			</div>
-			<!-- ____________________________________________________________________ -->
-			<!-- NO CLUBS MESSAGE -->
-			<h6 id="no-clubs" class="text-center my-4 fw-normal visually-hidden">
-				No clubs to display yet.
-				<strong>
-					<a href="/index.html" class="text-primary">Create One!</a>
-				</strong>
-			</h6>
+
 			<!-- ______________________________________________________________________________________________________ -->
 			<!-- CLUB DETAIL -->
 			<div id="club-detail" class="panel visually-hidden">

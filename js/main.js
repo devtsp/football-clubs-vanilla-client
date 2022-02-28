@@ -56,6 +56,23 @@ const fillEditForm = club => {
 	$inputs.forEach($input => {
 		$input.value = club[`${$input.name}`];
 	});
+	document.querySelector('#edit-form').onsubmit = async e => {
+		e.preventDefault();
+		const formData = new FormData(e.target);
+		const options = {
+			method: 'POST',
+			body: formData,
+		};
+		const response = await fetch(
+			`http://localhost:8080/edit/${e.target.dataset.clubId}`,
+			options
+		);
+		const data = await response.json();
+		document.querySelector('#club-list-tab').click();
+		document
+			.querySelector(`#all-clubs .club-detail-link[data-club-id=${club.id}]`)
+			.click();
+	};
 	return [...$inputs];
 };
 
@@ -125,8 +142,8 @@ const renderClubItem = club => {
 	$clubItem.querySelector('.club-detail-link').dataset.clubId = club.id;
 	$clubItem.querySelector('.club-detail-link').innerText = club.name;
 	$clubItem.querySelector(
-		'img'
-	).src = `http://localhost:8080/uploads/img/${club.crest}`;
+		'.flag-mini'
+	).style.backgroundImage = `linear-gradient(to bottom right, ${club.colors[0]} 50%, ${club.colors[1]} 50%)`;
 	$clubItem.classList.remove('visually-hidden');
 	document.querySelector('#all-clubs').appendChild($clubItem);
 	setIndexEvents($clubItem);
@@ -155,21 +172,37 @@ document.querySelector('nav').onclick = e => {
 	}
 };
 
+document.onclick = e => {
+	const clubs = document.querySelector('#all-clubs');
+	document.addEventListener('DOMContentLoaded', () => {
+		if (!clubs.length) {
+			document.querySelector('#no-clubs').classList.remove('visually-hidden');
+		} else {
+			document.querySelector('#no-clubs').classList.add('visually-hidden');
+		}
+	});
+};
+
 document.querySelector('#club-list-tab').onclick = e => {
 	displayIndexOfClubs();
 };
 
-document.querySelector('#edit-form').onsubmit = async e => {
+document.querySelector('#new-club-form').onsubmit = async e => {
 	e.preventDefault();
+	const formData = new FormData(e.target);
 	const options = {
 		method: 'POST',
-		headers: { 'Content-Type': 'form-data' },
+		body: formData,
 	};
-	const response = await fetch(
-		`http://localhost:8080/edit/${e.target.dataset.clubId}`,
-		options
-	);
+	const response = await fetch(`http://localhost:8080/`, options);
 	const data = await response.json();
-	console.log(data);
-	// document.querySelector('#club-list-tab').click();
+	console.log(data.id);
+	document.querySelector('#club-list-tab').click();
+	const clubLink = document.querySelector(
+		`.club-detail-link[data-club-id=${data.id}]`
+	);
+	console.log(clubLink);
+	// document
+	// 	.querySelector(`#all-clubs .club-detail-link[data-club-id=${data.id}]`)
+	// 	.click();
 };

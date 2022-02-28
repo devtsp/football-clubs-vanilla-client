@@ -28,16 +28,19 @@ body {
 }
 
 .club-detail-link:hover {
-	color: rgb(1, 1, 129) !important;
+	color: rgb(61, 61, 211) !important;
 	cursor: pointer;
 }
 
-.crest-mini {
+.flag-mini {
 	height: 20px;
 	width: 20px;
 	overflow: hidden;
+	border-radius: 20px;
+	border: 1px solid black;
 }
-.crest-mini img {
+
+.flag-mini img {
 	height: 100%;
 }
 
@@ -70,7 +73,7 @@ body {
 }
 
 #club-edit-link:hover {
-	color: rgb(1, 1, 129) !important;
+	color: rgb(61, 61, 211) !important;
 	cursor: pointer;
 }
 
