@@ -85,8 +85,8 @@ const fillDetails = async id => {
 		fillEditForm(club);
 	};
 	document.querySelector(
-		'#crest-main img'
-	).src = `http://localhost:8080/uploads/img/${club.crest}`;
+		'#crest-main'
+	).style.backgroundImage = `url('http://localhost:8080/uploads/img/${club.crest}`;
 
 	document.querySelectorAll('.field').forEach($field => {
 		$field.innerText = club[`${$field.id}`];
@@ -185,6 +185,22 @@ document.onclick = e => {
 
 document.querySelector('#club-list-tab').onclick = e => {
 	displayIndexOfClubs();
+};
+
+document.querySelector('#crest').onchange = e => {
+	const [image] = e.target.files;
+	if (image) {
+		const reader = new FileReader();
+		reader.onload = () => {
+			document.querySelector(
+				'.crest-main-preview'
+			).style.backgroundImage = `url('${reader.result}')`;
+		};
+		reader.readAsDataURL(image);
+	} else {
+		document.querySelector('#crest-main-preview').style.backgroundImage =
+			'url("../images/crest-empty.png")';
+	}
 };
 
 document.querySelector('#new-club-form').onsubmit = async e => {
