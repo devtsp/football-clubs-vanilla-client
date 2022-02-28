@@ -91,9 +91,9 @@ const fillEditForm = club => {
 			);
 			const data = await response.json();
 			document.querySelector('#club-list-tab').click();
-			// document
-			// 	.querySelector(`#all-clubs .club-detail-link[data-club-id=${club.id}]`)
-			// 	.click();
+			document
+				.querySelector(`.club-detail-link[data-club-id=${data.id}]`)
+				.click();
 		};
 	return [...$inputs];
 };
@@ -196,13 +196,11 @@ document.querySelector('nav').onclick = e => {
 
 document.onclick = e => {
 	const clubs = document.querySelector('#all-clubs');
-	document.addEventListener('DOMContentLoaded', () => {
-		if (!clubs.length) {
-			document.querySelector('#no-clubs').classList.remove('visually-hidden');
-		} else {
-			document.querySelector('#no-clubs').classList.add('visually-hidden');
-		}
-	});
+	if (!clubs.length) {
+		document.querySelector('#no-clubs').classList.remove('visually-hidden');
+	} else {
+		document.querySelector('#no-clubs').classList.add('visually-hidden');
+	}
 };
 
 document.querySelector('#club-list-tab').onclick = e => {
@@ -226,6 +224,10 @@ document.querySelector('#crest').onchange = e => {
 	}
 };
 
+document.querySelector('#create-one').onclick = e => {
+	document.querySelector('#club-create-tab').click();
+};
+
 document.querySelector('#new-club-form').onsubmit = async e => {
 	e.preventDefault();
 	const formData = new FormData(e.target);
@@ -235,13 +237,11 @@ document.querySelector('#new-club-form').onsubmit = async e => {
 	};
 	const response = await fetch(`http://localhost:8080/`, options);
 	const data = await response.json();
-	console.log(data.id);
 	document.querySelector('#club-list-tab').click();
-	const clubLink = document.querySelector(
-		`.club-detail-link[data-club-id=${data.id}]`
-	);
-	console.log(clubLink);
-	// document
-	// 	.querySelector(`#all-clubs .club-detail-link[data-club-id=${data.id}]`)
-	// 	.click();
+	setTimeout(() => {
+		const clubLink = document.querySelector(
+			`.club-detail-link[data-club-id=${data.id}]`
+		);
+		clubLink.click();
+	}, 10);
 };

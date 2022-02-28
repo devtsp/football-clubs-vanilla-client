@@ -15,7 +15,7 @@ body {
 	background-color: rgb(215, 241, 215);
 }
 
-#panel-header {
+.panel-header {
 	background-color: rgba(99, 99, 99, 0.11);
 }
 
@@ -46,6 +46,10 @@ body {
 
 .delete-club i:hover {
 	color: rgb(224, 69, 69);
+}
+
+#create-one:hover {
+	cursor: pointer;
 }
 
 /* CREST PREVIEW IN FORMS */

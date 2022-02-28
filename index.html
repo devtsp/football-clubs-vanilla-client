@@ -27,7 +27,7 @@
 			<!-- ______________________________________________________________________________ -->
 			<!-- NEW CLUB -->
 			<div id="club-create" class="panel">
-				<h5 id="panel-header" class="text-center m-0">Create New Club</h5>
+				<h5 class="panel-header text-center m-0">Create New Club</h5>
 				<form id="new-club-form" enctype="multipart/form-data" class="mb-0">
 					<div class="my-3">
 						<h6 class="mb-2 text-black-50 text-center">
@@ -235,7 +235,7 @@
 			<!-- _____________________________________________________________________________________________________________________________ -->
 			<!-- ALL CLUBS -->
 			<div id="club-list" class="panel visually-hidden">
-				<h5 id="panel-header" class="text-center m-0 mb-4">All Clubs</h5>
+				<h5 class="panel-header text-center m-0 mb-4">All Clubs</h5>
 				<ul class="list-unstyled m-0 d-flex flex-column align-items-stretch">
 					<!-- CLUB-ITEM-TEMPLATE -->
 					<li
@@ -266,18 +266,15 @@
 				</ul>
 				<!-- ____________________________________________________________________ -->
 				<!-- NO CLUBS MESSAGE -->
-				<h6 id="no-clubs" class="text-center my-4 fw-normal visually-hidden">
+				<div id="no-clubs" class="text-center my-4 fw-normal visually-hidden">
 					No clubs to display yet.
-					<strong>
-						<a href="/index.html" class="text-primary">Create One!</a>
-					</strong>
-				</h6>
+					<strong ><u id="create-one" class="text-primary">Create One!</u></a></strong>
+				</div>
 			</div>
-
 			<!-- ______________________________________________________________________________________________________ -->
 			<!-- CLUB DETAIL -->
 			<div id="club-detail" class="panel visually-hidden">
-				<h5 id="panel-header" class="text-center m-0 mb-4">Club Details</h5>
+				<h5 class="panel-header text-center m-0 mb-4">Club Details</h5>
 				<ul class="list-unstyled my-2">
 					<li class="d-flex justify-content-center align-items-center">
 						<div
@@ -351,10 +348,14 @@
 			<!-- _____________________________________________________________________________________________ -->
 			<!-- EDIT CLUB -->
 			<div id="club-edit" class="panel visually-hidden">
-				<form id="edit-form" class="mb-0" enctype="multipart/form-data">
-					<h6 class="text-center mb-3">Edit Club</h6>
-					<div class="row d-flex align-items-center">
-						<label for="crest" class="col-4 form-label my-0 text-black-50"
+				<form
+					id="edit-form"
+					class="mb-0 p-0 container"
+					enctype="multipart/form-data"
+				>
+					<h5 class="panel-header text-center mb-3 p-0">Edit Club</h5>
+					<div class="row g-0 d-flex align-items-center">
+						<label for="crest" class="col-4 form-label my-0 p-0 text-black-50"
 							>Crest</label
 						>
 						<input
@@ -365,13 +366,13 @@
 						/>
 					</div>
 					<div class="row">
-						<div class="col-4"></div>
+						<div class="col-4 p-0"></div>
 						<div
 							class="crest-main-preview d-flex justify-content-center align-items-center my-2"
 						></div>
 					</div>
-					<div class="row d-flex align-items-center my-2">
-						<span class="col-4 text-black-50">Colors</span>
+					<div class="row g-0 d-flex align-items-center my-2">
+						<span class="col-4 p-0 text-black-50">Colors</span>
 						<div class="col-4 p-0 d-flex align-items-centerflex-fill">
 							<label
 								for="color-1"
@@ -412,7 +413,7 @@
 						</div>
 					</div>
 					<div class="container p-0">
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label for="name-edit" class="form-label my-0 text-black-50 col-4"
 								>Name</label
 							>
@@ -426,7 +427,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label for="tla-edit" class="col-4 form-label my-0 text-black-50"
 								>TLA</label
 							>
@@ -440,7 +441,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label for="area-edit" class="col-4 form-label my-0 text-black-50"
 								>Area</label
 							>
@@ -452,7 +453,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center d-flex">
+						<div class="row g-0 d-flex align-items-center d-flex">
 							<label
 								for="adress-edit"
 								class="col-4 form-label my-0 text-black-50"
@@ -466,7 +467,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label
 								for="phone-edit"
 								class="col-4 form-label my-0 text-black-50"
@@ -481,7 +482,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label
 								for="email-edit"
 								class="col-4 form-label my-0 text-black-50"
@@ -495,7 +496,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label
 								for="founded-edit"
 								class="col-4 form-label my-0 text-black-50"
@@ -511,7 +512,7 @@
 								required
 							/>
 						</div>
-						<div class="row d-flex align-items-center">
+						<div class="row g-0 d-flex align-items-center">
 							<label
 								for="venue-edit"
 								class="col-4 form-label my-0 text-black-50"
@@ -535,7 +536,6 @@
 				</form>
 			</div>
 		</div>
-
 		<script src="js/main.js" type="module"></script>
 	</body>
 </html>
