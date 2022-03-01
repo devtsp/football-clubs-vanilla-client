@@ -137,11 +137,12 @@ const fillDetails = async id => {
 	document.querySelectorAll('.field').forEach($field => {
 		$field.innerText = club[`${$field.dataset.property}`];
 	});
+	document.querySelector('#last-updated-detail').innerText =
+		club['last-updated'].match(/\d+-\d+-\d+(?=T)/);
 	document.querySelector(
 		'#colors-banner'
 	).style.backgroundImage = `linear-gradient(to right, transparent, ${club.colors[0]} 20%, ${club.colors[0]} 50%, ${club.colors[1]} 50%, ${club.colors[1]} 80%, transparent)`;
 	document.querySelector('#map').src = setMapUrl(club);
-	// document.querySelector('#map') = setMapUrl(club);
 };
 
 const handleColorInput = club => {
