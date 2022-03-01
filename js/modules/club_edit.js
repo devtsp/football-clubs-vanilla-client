@@ -1,4 +1,5 @@
 import { API_URL } from './fetch.js';
+import { submitEdit } from './fetch.js';
 
 const handleColorInput = club => {
 	const $color1Prev = document.querySelector('#color-1');
@@ -55,23 +56,16 @@ export const fillEditForm = club => {
 		}
 	};
 
-	document.querySelector(
-		'#edit-form .crest-main-preview'
-	).style.backgroundImage = document.querySelector('#edit-form').onsubmit =
-		async e => {
-			e.preventDefault();
-			const formData = new FormData(e.target);
-			const options = {
-				method: 'POST',
-				body: formData,
-			};
-			const response = await fetch(
-				`${API_URL}/edit/${e.target.dataset.clubId}`,
-				options
-			);
-			const data = await response.json();
-			document.querySelector('#club-list-tab').click();
+	document.querySelector('#edit-form').onsubmit = e => {
+		e.preventDefault();
+		const formData = new FormData(e.target);
+		const options = {
+			method: 'POST',
+			body: formData,
 		};
+		submitEdit(options, e.target.dataset.clubId);
+		document.querySelector('#club-list-tab').click();
+	};
 
 	return [...$inputs];
 };

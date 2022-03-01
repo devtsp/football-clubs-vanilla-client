@@ -20,13 +20,20 @@
 	</head>
 	<body>
 		<div id="app" class="p-4 position-relative">
+      <!-- LOADING  -->
+      <div id="loading" class="position-absolute d-flex align-items-center justify-content-center w-100 h-100 top-0 start-0 visually-hidden">
+        <div class="text-center">
+          <div class="spinner-border text-light mb-2" role="status">
+            <span class="sr-only"></span>
+          </div>
+          <div id="loading-msg">Loading</div>
+        </div>
+      </div>
 			<!-- NAV BAR -->
 			<nav class="mb-4 d-flex justify-content-evenly">
 				<a id="club-create-tab" href="#" class="tab text-black-50">New Club</a>
 				<a id="club-list-tab" href="#" class="tab text-black-50">All Clubs</a>
 			</nav>
-      
-
 			<!-- ______________________________________________________________________________ -->
 			<!-- NEW CLUB -->
 			<div id="club-create" class="panel">
