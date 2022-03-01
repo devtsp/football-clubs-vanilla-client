@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -230,33 +231,31 @@
 			<!-- ALL CLUBS -->
 			<div id="club-list" class="panel visually-hidden">
 				<h5 class="panel-header text-center m-0 mb-4">All Clubs</h5>
-				<ul class="list-unstyled m-0 d-flex flex-column align-items-stretch">
-					<!-- CLUB-ITEM-TEMPLATE -->
-					<li
-						id="club-item-template"
-						class="mb-2 text-center visually-hidden mx-3"
-					>
-						<ul class="list-unstyled d-flex align-items-center">
-							<li
-								class="flag-mini mx-2 d-flex align-items-center justify-content-center"
-							>
-								<!-- <img class="club-crest" src="/" /> -->
-							</li>
-							<li
-								class="d-flex align-items-center justify-content-start flex-fill"
-							>
-								<h6
-									class="club-detail-link fs-6 lh-1 m-0 ps-3 text-black text-decoration-none"
-								></h6>
-							</li>
-							<li>
-								<a class="delete-club text-black" href="#">
-									<i class="club-delete-link bi bi-trash3 px-2"></i>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<div id="all-clubs"></div>
+        <!-- CLUB-ITEM-TEMPLATE -->
+        <li
+          id="club-item-template"
+          class="mb-2 text-center visually-hidden mx-3"
+        >
+          <ul class="list-unstyled d-flex align-items-center">
+            <li
+              class="flag-mini mx-2 d-flex align-items-center justify-content-center"
+            >
+            </li>
+            <li
+              class="d-flex align-items-center justify-content-start flex-fill"
+            >
+              <h6
+                class="club-detail-link fs-6 lh-1 m-0 ps-3 text-black text-decoration-none"
+              ></h6>
+            </li>
+            <li>
+              <a class="delete-club text-black" href="#">
+                <i class="club-delete-link bi bi-trash3 px-2"></i>
+              </a>
+            </li>
+          </ul>
+        </li>
+				<ul id="all-clubs" class="list-unstyled m-0 d-flex flex-column align-items-stretch">
 				</ul>
 				<!-- ____________________________________________________________________ -->
 				<!-- NO CLUBS MESSAGE -->

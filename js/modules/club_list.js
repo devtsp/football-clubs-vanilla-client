@@ -1,6 +1,7 @@
-import { fetchIndex } from './fetch.js';
+import { fetchIndex, fetchDelete } from './fetch.js';
 import { handlePanelsVisibility } from './nav.js';
 import { fillDetails } from './club_details.js';
+import { waitForElm } from './dom_obs.js';
 
 const renderClubItem = club => {
 	const $clubItem = document
@@ -27,7 +28,7 @@ const renderClubItem = club => {
 	return $clubItem;
 };
 
-const handleDelete = async id => {
+const handleDelete = id => {
 	document.querySelector('#all-clubs').classList.add('visually-hidden');
 
 	document
@@ -35,11 +36,10 @@ const handleDelete = async id => {
 		.classList.remove('visually-hidden');
 
 	document.querySelector('#delete-yes').onclick = e => {
-		fetchDelete(id);
-
-		document.querySelector(`#${id}`).remove();
-
 		document.querySelector('#all-clubs').classList.remove('visually-hidden');
+		fetchDelete(id);
+		const objectItem = waitForElm(`#${id}`);
+		objectItem.remove();
 
 		document
 			.querySelector('#delete-confirmation')
