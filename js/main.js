@@ -1,11 +1,13 @@
+const API_URL = 'https://crud-clubs-api.herokuapp.com';
+
 const fetchIndex = async () => {
-	const response = await fetch('http://localhost:8080/index');
+	const response = await fetch(`${API_URL}/index`);
 	const data = response.json();
 	return data;
 };
 
 const fetchClub = async id => {
-	const response = await fetch(`http://localhost:8080/${id}`);
+	const response = await fetch(`${API_URL}/${id}`);
 	const data = response.json();
 	return data;
 };
@@ -39,7 +41,7 @@ const fetchDelete = async id => {
 		method: 'DELETE',
 		headers: { 'Content-Type': 'application/json' },
 	};
-	const response = await fetch(`http://localhost:8080/${id}`, options);
+	const response = await fetch(`${API_URL}/${id}`, options);
 	const data = await response.json();
 	return data;
 };
@@ -74,7 +76,7 @@ const fillEditForm = club => {
 	});
 	document.querySelector(
 		'#edit-form .crest-main-preview'
-	).style.backgroundImage = `url('http://localhost:8080/uploads/img/${club.crest}')`;
+	).style.backgroundImage = `url('${API_URL}/uploads/img/${club.crest}')`;
 	document.querySelector('#crest-edit').onchange = e => {
 		const [image] = e.target.files;
 		if (image) {
@@ -102,7 +104,7 @@ const fillEditForm = club => {
 				body: formData,
 			};
 			const response = await fetch(
-				`http://localhost:8080/edit/${e.target.dataset.clubId}`,
+				`${API_URL}/edit/${e.target.dataset.clubId}`,
 				options
 			);
 			const data = await response.json();
@@ -130,7 +132,7 @@ const fillDetails = async id => {
 	};
 	document.querySelector(
 		'#crest-main'
-	).style.backgroundImage = `url('http://localhost:8080/uploads/img/${club.crest}`;
+	).style.backgroundImage = `url('${API_URL}/uploads/img/${club.crest}`;
 
 	document.querySelectorAll('.field').forEach($field => {
 		$field.innerText = club[`${$field.dataset.property}`];
@@ -262,7 +264,7 @@ document.querySelector('#new-club-form').onsubmit = async e => {
 		method: 'POST',
 		body: formData,
 	};
-	const response = await fetch(`http://localhost:8080/`, options);
+	const response = await fetch(`${API_URL}/`, options);
 	const data = await response.json();
 	document.querySelector('#club-list-tab').click();
 	setTimeout(() => {
