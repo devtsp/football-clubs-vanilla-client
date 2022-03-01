@@ -37,7 +37,7 @@ body {
 	width: 20px;
 	overflow: hidden;
 	border-radius: 20px;
-	border: 1px solid black;
+	border: 1px solid rgb(112, 112, 112);
 }
 
 .flag-mini img {

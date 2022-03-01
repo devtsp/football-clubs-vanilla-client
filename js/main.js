@@ -114,6 +114,11 @@ const fillEditForm = club => {
 	return [...$inputs];
 };
 
+const setMapUrl = club => {
+	const formattedLocation = club.adress.replaceAll(' ', '+');
+	return `https://www.google.com/maps/embed/v1/place?key=AIzaSyDj_xWnPF73loxliGpreVos99oyAtqv58U&q=${formattedLocation},${club.area}`;
+};
+
 const fillDetails = async id => {
 	const club = await fetchClub(id);
 	document.querySelector('#club-edit-link').dataset.clubId = club.id;
@@ -132,6 +137,7 @@ const fillDetails = async id => {
 	document.querySelector(
 		'#colors-banner'
 	).style.backgroundImage = `linear-gradient(to right, transparent, ${club.colors[0]} 20%, ${club.colors[0]} 50%, ${club.colors[1]} 50%, ${club.colors[1]} 80%, transparent)`;
+	document.querySelector('#map').src = setMapUrl(club);
 };
 
 const handleColorInput = club => {
