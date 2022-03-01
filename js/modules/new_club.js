@@ -28,10 +28,4 @@ document.querySelector('#new-club-form').onsubmit = async e => {
 	};
 	const posted = submitForm(options);
 	document.querySelector('#club-list-tab').click();
-	setTimeout(() => {
-		const clubLink = document.querySelector(
-			`.club-detail-link[data-club-id=${posted.id}]`
-		);
-		clubLink.click();
-	}, 10);
 };

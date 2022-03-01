@@ -71,9 +71,6 @@ export const fillEditForm = club => {
 			);
 			const data = await response.json();
 			document.querySelector('#club-list-tab').click();
-			document
-				.querySelector(`.club-detail-link[data-club-id=${data.id}]`)
-				.click();
 		};
 
 	return [...$inputs];
