@@ -1,5 +1,11 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap');
+
 body {
 	background-color: rgb(132, 148, 132);
+	/* font-family: Oswald, sans-serif; */
+	font-family: 'titillium web', sans-serif;
 }
 
 #app {
@@ -9,37 +15,65 @@ body {
 	background-color: rgb(215, 241, 215);
 }
 
+.panel-header {
+	background-color: rgba(99, 99, 99, 0.11);
+}
+
+/* CREATE CLUB */
+
 /* CLUB LIST */
 
-#club-list-panel > li {
+#club-list > li {
 	border-bottom: 1px solid white;
 }
 
-#club-detail-link:hover {
-	color: rgb(1, 1, 129) !important;
+.club-detail-link:hover {
+	color: rgb(61, 61, 211) !important;
 	cursor: pointer;
 }
 
-#crest-mini {
+.flag-mini {
 	height: 20px;
 	width: 20px;
+	overflow: hidden;
+	border-radius: 20px;
+	border: 1px solid rgb(112, 112, 112);
 }
-#crest-mini img {
+
+.flag-mini img {
 	height: 100%;
 }
 
-#delete-club i:hover {
+.delete-club i:hover {
 	color: rgb(224, 69, 69);
+}
+
+#create-one:hover {
+	cursor: pointer;
+}
+
+/* CREST PREVIEW IN FORMS */
+
+.crest-main-preview {
+	background-image: url('../images/crest-empty.png');
+	background-size: cover;
+	background-position: center;
+	width: 160px;
+	height: 160px;
+	border: 5px solid rgb(243, 243, 243);
+	border-radius: 10px;
+	outline: 1px solid rgb(114, 114, 114);
 }
 
 /* CLUB DETAILS */
 
 #crest-main {
+	background-size: cover;
+	background-position: center;
 	width: 160px;
 	height: 160px;
-	overflow: hidden;
-	border: 5px solid rgba(255, 255, 255, 0.363);
-	border-radius: 20px;
+	border: 5px solid rgb(243, 243, 243);
+	border-radius: 10px;
 	outline: 1px solid rgb(114, 114, 114);
 }
 
@@ -56,12 +90,19 @@ body {
 	background-color: rgba(255, 255, 255, 0.226);
 }
 
-#club-edit-link i:hover {
-	color: rgb(1, 1, 129) !important;
+#club-edit-link:hover {
+	color: rgb(61, 61, 211) !important;
+	cursor: pointer;
 }
 
 /* CLUB EDIT */
 
 .edit-color {
-	padding: 1px;
+	height: 40px !important;
+}
+
+/* DELETE MODAL */
+
+#delete-modal {
+	background-color: rgba(49, 49, 49, 0.295);
 }
