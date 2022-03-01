@@ -106,8 +106,14 @@ body {
 	height: 40px !important;
 }
 
-/* DELETE MODAL */
+/* LOADING  */
 
-#delete-modal {
-	background-color: rgba(49, 49, 49, 0.295);
+#loading {
+	background-color: rgba(32, 32, 32, 0.884);
+	color: white;
+	font-family: arial;
+}
+
+#loading-msg {
+	letter-spacing: 0.2rem;
 }

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -19,13 +20,20 @@
 	</head>
 	<body>
 		<div id="app" class="p-4 position-relative">
+      <!-- LOADING  -->
+      <div id="loading" class="position-absolute d-flex align-items-center justify-content-center w-100 h-100 top-0 start-0 visually-hidden">
+        <div class="text-center">
+          <div class="spinner-border text-light mb-2" role="status">
+            <span class="sr-only"></span>
+          </div>
+          <div id="loading-msg">Loading</div>
+        </div>
+      </div>
 			<!-- NAV BAR -->
 			<nav class="mb-4 d-flex justify-content-evenly">
 				<a id="club-create-tab" href="#" class="tab text-black-50">New Club</a>
 				<a id="club-list-tab" href="#" class="tab text-black-50">All Clubs</a>
 			</nav>
-      
-
 			<!-- ______________________________________________________________________________ -->
 			<!-- NEW CLUB -->
 			<div id="club-create" class="panel">
@@ -230,33 +238,31 @@
 			<!-- ALL CLUBS -->
 			<div id="club-list" class="panel visually-hidden">
 				<h5 class="panel-header text-center m-0 mb-4">All Clubs</h5>
-				<ul class="list-unstyled m-0 d-flex flex-column align-items-stretch">
-					<!-- CLUB-ITEM-TEMPLATE -->
-					<li
-						id="club-item-template"
-						class="mb-2 text-center visually-hidden mx-3"
-					>
-						<ul class="list-unstyled d-flex align-items-center">
-							<li
-								class="flag-mini mx-2 d-flex align-items-center justify-content-center"
-							>
-								<!-- <img class="club-crest" src="/" /> -->
-							</li>
-							<li
-								class="d-flex align-items-center justify-content-start flex-fill"
-							>
-								<h6
-									class="club-detail-link fs-6 lh-1 m-0 ps-3 text-black text-decoration-none"
-								></h6>
-							</li>
-							<li>
-								<a class="delete-club text-black" href="#">
-									<i class="club-delete-link bi bi-trash3 px-2"></i>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<div id="all-clubs"></div>
+        <!-- CLUB-ITEM-TEMPLATE -->
+        <li
+          id="club-item-template"
+          class="mb-2 text-center visually-hidden mx-3"
+        >
+          <ul class="list-unstyled d-flex align-items-center">
+            <li
+              class="flag-mini mx-2 d-flex align-items-center justify-content-center"
+            >
+            </li>
+            <li
+              class="d-flex align-items-center justify-content-start flex-fill"
+            >
+              <h6
+                class="club-detail-link fs-6 lh-1 m-0 ps-3 text-black text-decoration-none"
+              ></h6>
+            </li>
+            <li>
+              <a class="delete-club text-black" href="#">
+                <i class="club-delete-link bi bi-trash3 px-2"></i>
+              </a>
+            </li>
+          </ul>
+        </li>
+				<ul id="all-clubs" class="list-unstyled m-0 d-flex flex-column align-items-stretch">
 				</ul>
 				<!-- ____________________________________________________________________ -->
 				<!-- NO CLUBS MESSAGE -->
@@ -542,6 +548,11 @@
 				</form>
 			</div>
 		</div>
-		<script src="js/main.js" type="module"></script>
+		<script src="js/modules/fetch.js" type="module"></script>
+		<script src="js/modules/nav.js" type="module"></script>
+		<script src="js/modules/new_club.js" type="module"></script>
+		<script src="js/modules/club_list.js" type="module"></script>
+		<script src="js/modules/club_details.js" type="module"></script>
+		<script src="js/modules/club_edit.js" type="module"></script>
 	</body>
 </html>
