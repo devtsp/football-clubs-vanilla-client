@@ -117,7 +117,7 @@ const fillEditForm = club => {
 const setMapUrl = club => {
 	const formattedArea = club.area.replaceAll(' ', '+');
 	const formattedLocation = club.adress.replaceAll(' ', '+');
-	return `https://www.google.com/maps/embed/v1/place?key=AIzaSyAlCkkdIYjgnEDWZIhf-XOLiaGDSQrtrH4&q=${formattedLocation},${formattedArea}`;
+	return `https://www.google.com/maps/embed/v1/place?key=AIzaSyA18JP-S5euBMHAqDoiBu_mhLjYrLAI5mM&q=${formattedLocation},${formattedArea}`;
 };
 
 const fillDetails = async id => {
