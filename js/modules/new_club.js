@@ -1,5 +1,4 @@
 import { submitForm } from './fetch.js';
-import { toggleLoading } from './loading.js';
 
 document.querySelector('#crest').onchange = e => {
 	const [image] = e.target.files;
@@ -20,13 +19,13 @@ document.querySelector('#crest').onchange = e => {
 	}
 };
 
-document.querySelector('#new-club-form').onsubmit = e => {
+document.querySelector('#new-club-form').onsubmit = async e => {
 	e.preventDefault();
 	const formData = new FormData(e.target);
 	const options = {
 		method: 'POST',
 		body: formData,
 	};
-	submitForm(options);
+	await submitForm(options);
 	document.querySelector('#club-list-tab').click();
 };
