@@ -1,6 +1,6 @@
 # Football Clubs
 
-### [Launch App](https://devtsp.github.io/football-clubs-client) 🚀
+### [Launch App](https://devtsp.github.io/football-clubs-vanilla-client) 🚀
 
 ---
 
